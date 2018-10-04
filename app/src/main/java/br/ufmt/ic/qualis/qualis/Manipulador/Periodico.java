@@ -3,8 +3,7 @@ package br.ufmt.ic.qualis.qualis.Manipulador;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Conferencia {
-
+public class Periodico {
     private ArrayList data;
     private List<Json> jsonList;
     private Json json;
@@ -18,8 +17,8 @@ public class Conferencia {
             aux = (ArrayList) data.get(i);
 
             json = new Json();
-            json.setSiglas(aux.get(0).toString());
-            json.setConferencia(aux.get(1).toString());
+            json.setIssn(aux.get(0).toString());
+            json.setPeriodico(aux.get(1).toString());
             json.setExtrato(aux.get(2).toString());
         }
 

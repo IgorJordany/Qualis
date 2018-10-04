@@ -1,4 +1,4 @@
-package br.ufmt.ic.qualis.qualis.Manipulador;
+package br.ufmt.ic.qualis.qualis.Requests;
 
 import android.os.AsyncTask;
 
@@ -10,19 +10,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-public class HttpService extends AsyncTask<Void, Void, CEP> {
+import br.ufmt.ic.qualis.qualis.Manipulador.Conferencia;
 
-    private final String cep;
+public class HttpConferencias extends AsyncTask<Void, Void, Conferencia> {
 
-    public HttpService(String cep) {
-        this.cep = cep;
+    private final String opcao;
+
+    public HttpConferencias(String opcao) {
+        this.opcao = opcao;
     }
 
-    protected CEP doInBackground(Void... voids) {
+    protected Conferencia doInBackground(Void... voids) {
         StringBuilder resposta = new StringBuilder();
-
+        URL url;
         try {
-            URL url = new URL("http://qualis.ic.ufmt.br/qualis_conferencias_2016.json");
+
+            url = new URL("http://qualis.ic.ufmt.br/qualis_conferencias_2016.json");
+
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
@@ -41,6 +45,7 @@ public class HttpService extends AsyncTask<Void, Void, CEP> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new Gson().fromJson(resposta.toString(), CEP.class);
+
+        return new Gson().fromJson(resposta.toString(), Conferencia.class);
     }
 }
