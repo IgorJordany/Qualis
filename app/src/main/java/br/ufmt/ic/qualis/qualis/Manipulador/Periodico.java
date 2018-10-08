@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Periodico {
     private ArrayList data;
-    private List<Json> jsonList;
+    private ArrayList<Json> jsonArrayList = new ArrayList<>();
     private Json json;
 
 
-    public Object getData() {
+    public ArrayList<Json> getData() {
         ArrayList aux;
 
 
@@ -20,9 +20,11 @@ public class Periodico {
             json.setIssn(aux.get(0).toString());
             json.setPeriodico(aux.get(1).toString());
             json.setExtrato(aux.get(2).toString());
+
+            jsonArrayList.add(json);
         }
 
-        return json;
+        return jsonArrayList;
     }
 
     public void setData(ArrayList data) {
@@ -30,7 +32,7 @@ public class Periodico {
     }
 
 
-    public Json getObjetc() {
-        return (Json) getData();
+    public ArrayList<Json> getObjetc() {
+        return getData();
     }
 }

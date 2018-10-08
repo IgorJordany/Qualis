@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Correlacao {
     private ArrayList data;
-    private List<Json> jsonList;
+    private ArrayList<Json> jsonArrayList = new ArrayList<>();
     private Json json;
 
 
-    public Object getData() {
+    public ArrayList<Json> getData() {
         ArrayList aux;
 
 
@@ -22,9 +22,11 @@ public class Correlacao {
             json.setExtratocomp(aux.get(2).toString());
             json.setExtrato(aux.get(3).toString());
             json.setArea(aux.get(4).toString());
+
+            jsonArrayList.add(json);
         }
 
-        return json;
+        return jsonArrayList;
     }
 
     public void setData(ArrayList data) {
@@ -32,7 +34,7 @@ public class Correlacao {
     }
 
 
-    public Json getObjetc() {
-        return (Json) getData();
+    public ArrayList<Json> getObjetc() {
+        return getData();
     }
 }
